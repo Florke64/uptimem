@@ -1,6 +1,8 @@
 #!/bin/env bash
 # This bash script does stuff.
-# Website: 
+# This is licensed under MIT license.
+# Website: https://github.com/Florke64/uptimem
+
 ID="PARIS"
 HOSTS="$@"
 SUBSCRIBERS=$(cat "subscribers.txt")
