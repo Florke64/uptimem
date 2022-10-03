@@ -1,1 +1,1 @@
-wasiak.daniel@gmail.com daniel@florke.pl
+user1@mail.example.com user2@example.com
