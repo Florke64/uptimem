@@ -45,7 +45,7 @@ main() {
         then
             echo "Ping succeess!"
             rm -f "$lockfile"
-    else
+        else
             ls $CACHE_DIR > /dev/null || mkdir -p $CACHE_DIR
             
             if ls "$lockfile" > /dev/null
