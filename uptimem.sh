@@ -18,10 +18,10 @@ notification() {
     status="$2"
     curtime="$(date --iso-8601=seconds)"
     maildir="/tmp/mail/$curtime/"
-    mkdir -p $maildir
+    mkdir -p "$maildir"
     mail="$MAILDIR/notification_message.txt"
 
-    if $status -eq "1"
+    if "$status" -eq "1"
     then
         echo "$SUBJECT_FAIL" > $mail
         echo "$BODY_FAIL" >> $mail
