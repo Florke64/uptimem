@@ -15,18 +15,20 @@ BODY_FAIL="You will be informed when it is back up via separate e-mail."
 BODY_SUCC="Remote machine answered the ping."
 
 notification() {
-    CURTIME="$(date --iso-8601=seconds)"
-    MAILDIR="/tmp/mail/$CURTIME/"
-    mkdir -p $MAILDIR
-    MAIL="$MAILDIR/notification_message.txt"
-    
-    echo $SUBJECT_FAIL > $MAIL
+	
 
-    echo $BODY_FAIL >> $MAIL
-    echo "---" >> $MAIL
-    echo "$CURTIME" >> $MAIL
+    curtime="$(date --iso-8601=seconds)"
+    maildir="/tmp/mail/$curtime/"
+    mkdir -p $maildir
+    mail="$MAILDIR/notification_message.txt"
     
-    sendmail $SUBSCRIBERS < $MAIL
+    echo $SUBJECT_FAIL > $mail
+
+    echo $BODY_FAIL >> $mail
+    echo "---" >> $mail
+    echo "$curtime" >> $mail
+    
+    sendmail $SUBSCRIBERS < $mail
 }
 
 test() {
