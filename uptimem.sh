@@ -57,7 +57,7 @@ main() {
         if test "$host" 1
         then
             echo "Ping succeess!"
-            rm -f "$lockfile" && notification "$host" 0
+            if ls "$lockfile" > /dev/null; then rm -f "$lockfile" && notification "$host" 0; fi
         else
             ls $CACHE_DIR > /dev/null || mkdir -p $CACHE_DIR
 
