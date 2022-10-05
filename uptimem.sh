@@ -3,7 +3,7 @@
 # This is licensed under MIT license.
 # Website: https://github.com/Florke64/uptimem
 
-ID="PARIS"
+ID="$(hostname)"
 HOSTS="$@"
 SUBSCRIBERS=$(cat "subscribers.txt")
 CACHE_DIR="$HOME/.cache/uptimem"
