@@ -15,13 +15,13 @@ BODY_FAIL="You will be informed when it is back up via separate e-mail."
 BODY_SUCC="Remote machine answered the ping."
 
 notification() {
-    status="$2"
+    status=$2
     curtime="$(date --iso-8601=seconds)"
     maildir="/tmp/mail/$curtime/"
     mkdir -p "$maildir"
     mail="$maildir/notification_message.txt"
 
-    if "$status" -eq "1"
+    if [ $status -eq 1 ]
     then
         echo "$SUBJECT_FAIL" > $mail
         echo "$BODY_FAIL" >> $mail
@@ -57,7 +57,7 @@ main() {
         if test "$host" 1
         then
             echo "Ping succeess!"
-            rm -f "$lockfile" && notification $host "1"
+            rm -f "$lockfile" && notification $host 1
         else
             ls $CACHE_DIR > /dev/null || mkdir -p $CACHE_DIR
 
@@ -67,7 +67,7 @@ main() {
             else
                 echo "[!] Uptime check with $host failed."
                 touch "$lockfile"
-                notification $host "0"
+                notification $host 0
             fi
         fi
     done
