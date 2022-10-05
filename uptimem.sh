@@ -57,7 +57,7 @@ main() {
         if test "$host" 1
         then
             echo "Ping succeess!"
-            rm -f "$lockfile" && notification $host 1
+            rm -f "$lockfile" && notification "$host" 0
         else
             ls $CACHE_DIR > /dev/null || mkdir -p $CACHE_DIR
 
@@ -67,7 +67,7 @@ main() {
             else
                 echo "[!] Uptime check with $host failed."
                 touch "$lockfile"
-                notification $host 0
+                notification "$host" 1
             fi
         fi
     done
