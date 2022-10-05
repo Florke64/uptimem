@@ -19,7 +19,7 @@ notification() {
     curtime="$(date --iso-8601=seconds)"
     maildir="/tmp/mail/$curtime/"
     mkdir -p "$maildir"
-    mail="$MAILDIR/notification_message.txt"
+    mail="$maildir/notification_message.txt"
 
     if "$status" -eq "1"
     then
