@@ -87,4 +87,7 @@ main() {
     done
 }
 
+mkdir -p $CONFIG_DIR
+mkdir -p $UPTIME_LOG
+
 main
