@@ -88,6 +88,6 @@ main() {
 }
 
 mkdir -p $CONFIG_DIR > /dev/null
-mkdir -p $UPTIME_LOG > /dev/null
+mkdir -p $CACHE_DIR > /dev/null
 
 main
