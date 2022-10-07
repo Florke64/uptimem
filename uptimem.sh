@@ -6,10 +6,7 @@
 ID="$(hostname)"
 HOSTS="$@"
 SUBSCRIBERS=$(cat "subscribers.txt")
-
 CACHE_DIR="$HOME/.cache/uptimem"
-CONFIG_DIR="$HOME/.config/uptimem"
-UPTIME_LOG="$CONFIG_DIR/uptimem.log"
 
 # E-Mail Content
 SUBJECT_FAIL="Subject: $ID: Uptime check failed with $1"
@@ -39,15 +36,8 @@ notification() {
     sendmail "$SUBSCRIBERS" < $mail
 }
 
-log_offline() {
-    echo "$(hostname) $(date --iso-8601=seconds)"
-    echo "$(uptime)"
-    echo "$(ip a)"
-}
-
 test() {
     echo "Testing $1."
-    
     if ping -c $2 -i 5 "$1" > /dev/null
     then
         return 0
@@ -61,9 +51,6 @@ test() {
 }
 
 main() {
-    # TODO: Cleaning logfile
-    log_offline >> $UPTIME_LOG
-    
     for host in $HOSTS; do
         lockfile="$CACHE_DIR/$host"
 
@@ -81,7 +68,6 @@ main() {
                 echo "[!] Uptime check with $host failed."
                 touch "$lockfile"
                 notification "$host" 1
-                echo "$host hasn't respond to ping" >> $UPTIME_LOG
             fi
         fi
     done
