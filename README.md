@@ -1,5 +1,6 @@
 # uptimem
-Utility to measure remote server availablility.
+Utility to measure remote server availablility. Saves uptime logs.
+Sends email if tested remote host don't answer a ping.
 
 ## requirements
 `bash` `sendmail` (pre-configured, optional)
